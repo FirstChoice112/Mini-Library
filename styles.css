@@ -1,0 +1,308 @@
+/*****Basic styling/ Font*****/
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto Slab", serif;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/*****Första sidan*****/
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.wrapper {
+  display: flex;
+  height: 35rem;
+  width: 53rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  display: flex;
+  width: 53rem;
+  height: 3.4375rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Roboto;
+  font-size: 2.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.vertical-line {
+  position: absolute;
+  width: 0.1875rem;
+  margin-left: 0.5rem;
+  height: 100%;
+  flex-shrink: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 28.65%,
+    rgba(0, 0, 0, 0.4) 67.71%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.title {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 1.5rem;
+  margin-top: 11rem;
+  width: 8.5rem;
+}
+.book {
+  width: 12.5rem;
+  height: 15rem;
+  flex-shrink: 0;
+  border-radius: 0.125rem;
+  overflow: hidden;
+}
+.author {
+  margin-left: 1.5rem;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.madeline {
+  background: linear-gradient(
+      208deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    ),
+    #f2c94c;
+
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+}
+.peter {
+  background: linear-gradient(
+      208deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    ),
+    #f2994a;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+}
+.charlotte {
+  border-radius: 0.125rem;
+  background: linear-gradient(
+      208deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    ),
+    #eb5757;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+}
+.harold {
+  border-radius: 0.125rem;
+  background: linear-gradient(
+      208deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    ),
+    #9b51e0;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+}
+.wild {
+  border-radius: 0.125rem;
+  background: linear-gradient(
+      208deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    ),
+    #56ccf2;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+}
+.goodnight {
+  border-radius: 0.125rem;
+  background: linear-gradient(
+      208deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    ),
+    #2f80ed;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+}
+.wrinkle {
+  border-radius: 0.125rem;
+  background: linear-gradient(
+      208deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    ),
+    #6fcf97;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+}
+.caterpillar {
+  border-radius: 0.125rem;
+  background: linear-gradient(
+      208deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 92.13%
+    ),
+    #27ae60;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+}
+/*****Andra sidan*****/
+
+.container__rendered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  height: 100vh;
+}
+.wrapper__rendered {
+  display: flex;
+}
+
+.book__rendered {
+  width: 24.32256rem;
+  height: 29rem;
+  flex-shrink: 0;
+  background-color: #27ae60;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.vertical-line__page2 {
+  width: 0.35081rem;
+  height: 29rem;
+  flex-shrink: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 28.65%,
+    rgba(0, 0, 0, 0.4) 67.71%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  margin-left: 1rem;
+  position: absolute;
+}
+.title__page2 {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Roboto;
+  font-size: 2.375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 1.5rem;
+}
+.author__page2 {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.information__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 24rem;
+  height: 29rem;
+}
+.title__information {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 2.375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 2rem;
+}
+.author__information {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+}
+.text__information {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 1.3125rem */
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+}
+.information__top,
+.information__bottom {
+  display: flex;
+  gap: 1rem;
+}
+
+.square__information {
+  display: flex;
+  flex-direction: column;
+  width: 24.125rem;
+  height: 4.375rem;
+  flex-shrink: 0;
+  border-radius: 0.125rem;
+  background: rgba(196, 196, 196, 0.08);
+  padding: 0.5rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+.square__text {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 1.3125rem */
+  display: flex;
+}
+.square__rendered {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+.publisher {
+  margin-left: 3.8rem;
+}
+.button__page2 {
+  width: 11.75rem;
+  height: 3rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  background: #eee;
+  margin-left: 2rem;
+}
