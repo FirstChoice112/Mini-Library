@@ -1,33 +1,36 @@
-//Pseudokod
-//1. Hämta API och analysera informationen
-//2. Skapa en function med addeventlistener på alla böcker
-//3. Skapa en function som skapar upp HTML taggar för rendera sidan "HTML2"
-//4. Skapa function för att rendera boken med title och author + färg.
-//5. Skapa en function som renderar text information, title, authior, audience, first published, pages och publisher.
-// Skapa en eventlistener på tillbakaknappen för att gå tillbaka till mainpage.
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const books = document.querySelectorAll(".book");
-//Hämta API
-async function getBookData(bookId) {
-  try {
-    const response = await fetch(
-      `https://my-json-server.typicode.com/zocom-christoffer-wallenberg/books-api/books/${bookId}`
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching book data:", error);
-    throw error;
-  }
+function getBookData(bookId) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response = yield fetch(`https://my-json-server.typicode.com/zocom-christoffer-wallenberg/books-api/books/${bookId}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error. Status: ${response.status} `);
+            }
+            const data = yield response.json();
+            return data;
+        }
+        catch (error) {
+            console.error("Error fetching book data:", error);
+            throw error;
+        }
+    });
 }
-//Hämta bakrundsfärgen till boken för min renderBookView function. (Window = det globala scopet för JS i en webbläsare)
 function getBackgroundColor(book) {
-  const computedStyle = window.getComputedStyle(book);
-  return computedStyle.backgroundColor;
+    const computedStyle = window.getComputedStyle(book);
+    return computedStyle.backgroundColor || "";
 }
-
-//Tar in informationen från API och getBackroundcolor som parametrar och skapar upp och renderar HTML element.
 function renderBookView(bookData, backgroundColor) {
-  const html = `
+    const html = `
     <div class="container__rendered">
       <div class="wrapper__rendered">
         <div class="book__rendered" style="background-color: ${backgroundColor}">
@@ -57,28 +60,26 @@ function renderBookView(bookData, backgroundColor) {
         </div>
       </div>
     </div>`;
-  //Fäster de renderade HTML elementen till body
-  document.body.innerHTML = html;
-  //Aktivera den renderade knappen för att ta mig tillbaka till förstasidan.
-  const backButton = document.getElementById("button__rendered");
-  backButton.addEventListener("click", () => {
-    window.location.reload();
-  });
-}
-//Eventlistener för varje bok när den klickas på.
-books.forEach((book) => {
-  //Split ger mig en string tillbaka och parseInt förvandlar det till en siffra för att nå ID't på boken jag har klickat på.
-  book.addEventListener("click", async () => {
-    const bookId = parseInt(book.id.split("__nr__")[1]);
-
-    try {
-      const bookData = await getBookData(bookId);
-      const backgroundColor = getBackgroundColor(book);
-      console.log("Book Data:", bookData);
-      console.log("Background Color:", backgroundColor);
-      renderBookView(bookData, backgroundColor);
-    } catch (error) {
-      console.error("Error:", error);
+    document.body.innerHTML = html;
+    const backButton = document.getElementById("button__rendered");
+    if (backButton) {
+        backButton.addEventListener("click", () => {
+            window.location.reload();
+        });
     }
-  });
+}
+books.forEach((book) => {
+    book.addEventListener("click", () => __awaiter(void 0, void 0, void 0, function* () {
+        const bookId = parseInt(book.id.split("__nr__")[1]);
+        try {
+            const bookData = yield getBookData(bookId);
+            const backgroundColor = getBackgroundColor(book);
+            console.log("Book Data:", bookData);
+            console.log("Background Color:", backgroundColor);
+            renderBookView(bookData, backgroundColor);
+        }
+        catch (error) {
+            console.error("Error:", error);
+        }
+    }));
 });
