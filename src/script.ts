@@ -1,17 +1,8 @@
+//Importerar mitt interface
+import { BookData } from "./bookData";
+//Definierar HTML DOM-element
 const books: NodeListOf<Element> = document.querySelectorAll(".book");
-
-interface BookData {
-  title: string;
-  author: string;
-  plot: string;
-  audience: string;
-  year: number;
-  pages: number;
-  publisher: string;
-  id: number;
-  color: string;
-}
-
+//Definierar bookId och promise mot mitt interface
 async function getBookData(bookId: number): Promise<BookData> {
   try {
     const response = await fetch(
@@ -20,8 +11,8 @@ async function getBookData(bookId: number): Promise<BookData> {
     if (!response.ok) {
       throw new Error(`HTTP error. Status: ${response.status} `);
     }
-
-    const data: BookData = await response.json();
+    //Definiera min response mot mitt interface bookData
+    const data: BookData = (await response.json()) as BookData;
     return data;
   } catch (error) {
     console.error("Error fetching book data:", error);
@@ -31,10 +22,11 @@ async function getBookData(bookId: number): Promise<BookData> {
 //Hämta bakrundsfärgen till boken för min renderBookView function. (Window = det globala scopet för JS i en webbläsare)
 function getBackgroundColor(book: Element): string {
   const computedStyle = window.getComputedStyle(book as HTMLElement);
-  return computedStyle.backgroundColor || ""; //Kolla detta <--
+  //Om bakrundsfärgen skulle retuneras som 'falsy' genereras ingen färg och hämtningen av information kommer fortfarande att fungera.
+  return computedStyle.backgroundColor || "";
 }
 
-//Tar in informationen från API och getBackroundcolor som parametrar och skapar upp och renderar HTML element.
+//Tar in informationen från API och getBackroundcolor som parametrar och skapar upp och renderar HTML element. Refererar till mitt Interface och backroundcolor som en string, void ligger på denna function då den inte retunerar ett värde.
 function renderBookView(bookData: BookData, backgroundColor: string): void {
   const html = `
     <div class="container__rendered">
